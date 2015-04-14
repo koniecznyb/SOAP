@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="soa-ear:ear">
+    <output-path>$PROJECT_DIR$/ear/target</output-path>
+    <root id="archive" name="soa-ear.ear">
+      <element id="artifact" artifact-name="soa-ear:ear exploded" />
+    </root>
+  </artifact>
+</component>

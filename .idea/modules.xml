@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/generated/Generated.iml" filepath="$PROJECT_DIR$/generated/Generated.iml" />
+      <module fileurl="file://$PROJECT_DIR$/soa.iml" filepath="$PROJECT_DIR$/soa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ear/soa-ear.iml" filepath="$PROJECT_DIR$/ear/soa-ear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ejb/soa-ejb.iml" filepath="$PROJECT_DIR$/ejb/soa-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/soa-web.iml" filepath="$PROJECT_DIR$/web/soa-web.iml" />
+    </modules>
+  </component>
+</project>
