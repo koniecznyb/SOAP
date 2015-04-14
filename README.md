@@ -11,7 +11,7 @@ soap=as
 ```
 ##### standalone.xml
 
-Miêdzy ```<security-domains></security-domains>``` dodaj
+MiÄ™dzy ```<security-domains></security-domains>``` dodaj
 ```
 <security-domain name="JBossWS" cache-type="default">
   <authentication>
@@ -21,4 +21,16 @@ Miêdzy ```<security-domains></security-domains>``` dodaj
       </login-module>
   </authentication>
 </security-domain>
+```
+
+#### Generowanie kodu z wsdl
+
+```
+wsimport -d generated http://localhost:8080/soa-ejb/Authorization?wsdl -keep -Xauthfile auth.txt
+```
+
+gdzie plik auth.txt:
+
+```
+http://soap:as@localhost:8080/soa-ejb/Authorization?wsdl
 ```

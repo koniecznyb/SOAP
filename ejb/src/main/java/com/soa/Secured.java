@@ -23,6 +23,7 @@ import javax.jws.soap.SOAPBinding;
 @WebContext(transportGuarantee = TransportGuarantee.NONE, secureWSDLAccess = true, authMethod = AuthMethod.BASIC)
 public class Secured {
 
+    @RolesAllowed("AdminRole")
     @WebMethod
     public String hello(String name){
         return "Hello " + name;
