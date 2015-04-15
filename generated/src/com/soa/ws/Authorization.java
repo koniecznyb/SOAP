@@ -1,5 +1,5 @@
 
-package localhost._8080.ws;
+package com.soa.ws;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
