@@ -34,3 +34,15 @@ gdzie plik auth.txt:
 ```
 http://soap:as@localhost:8080/soa-ejb/Authorization?wsdl
 ```
+
+##### REST
+#### TODO
+
+```
+1. WYST WS REST:
+    1.1 GET, POST, PUT
+    1.2 ZWROT: JSON, PDF, PNG
+    1.3 KODY BŁEDOW HTTP!
+2. KONSUMPCJA WS REST/JSON:
+    2.1 OBJECTFACTORY
+```
