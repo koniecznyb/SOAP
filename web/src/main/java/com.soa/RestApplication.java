@@ -1,11 +1,10 @@
-package java.com.soa;
+package com.soa;
 
 import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 /**
