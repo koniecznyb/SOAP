@@ -6,9 +6,17 @@
         <element id="directory" name="classes">
           <element id="module-output" name="soa-web" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.11" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.11" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.11" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.1.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.1.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.1.3" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/web/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/web/target/soa-web/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="soa-web/web/Web" />
     </root>
