@@ -1,5 +1,7 @@
 package com.soa;
 
+import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
+
 import javax.ejb.Stateless;
 import javax.imageio.ImageIO;
 import javax.print.attribute.standard.Media;
@@ -64,7 +66,7 @@ public class TestResource {
 
     @POST
     @Path("post")
-    public Response post(@QueryParam("id") String id){
+    public Response post(@FormParam("id") String id, @FormParam("param2") String param2){
 
         Student s = new Student("Jan", "Nowak", id);
         return Response.ok(s, MediaType.APPLICATION_JSON).build();
