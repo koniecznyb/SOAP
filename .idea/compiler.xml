@@ -22,12 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="RESTConsumer" />
         <module name="soa-ear" />
         <module name="soa-ejb" />
         <module name="soa-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="RESTConsumer" target="1.5" />
       <module name="soa" target="1.6" />
       <module name="soa-ear" target="1.6" />
       <module name="soa-ejb" target="1.6" />
