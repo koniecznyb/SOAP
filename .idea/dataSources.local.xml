@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - redi2@mysql.agh.edu.pl" uuid="7e051d15-ddaf-40f9-8805-28c446057c55">
+      <secret-storage>master_key</secret-storage>
+      <user-name>redi2</user-name>
+      <schema-pattern>redi2.*</schema-pattern>
+      <default-schemas>redi2.*</default-schemas>
+    </data-source>
+  </component>
+</project>

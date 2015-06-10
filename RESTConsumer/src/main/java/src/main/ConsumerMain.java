@@ -27,7 +27,7 @@ public class ConsumerMain {
         Response res = client.target("http://localhost:8080/soa-web/test/hello").request("application/json").get();
         String message = res.readEntity(String.class);
 
-        ObjectMapper objectMa2pper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
         Student student = objectMapper.readValue(message, Student.class);
 
         System.out.println(student.getFirstName() + ": " + student.getLastName());
