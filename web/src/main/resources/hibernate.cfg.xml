@@ -11,15 +11,21 @@
             com.mysql.jdbc.Driver
         </property>
         <property name="connection.url">
-            jdbc:mysql://mysql.agh.edu.pl:3306/redi2
+            jdbc:mysql://localhost:3306/hibernate
         </property>
         <property name="connection.username">
-            redi2
+            redi
         </property>
         <property name="connection.password">
-            EdqTQhJk
+            password
         </property>
         <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+         <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">
+            thread
+        </property>
+
+        <mapping resource="Student.hbm.xml"/>
+        <mapping resource="Subject.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

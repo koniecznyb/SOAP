@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.soa.model">
+
+    <class name="com.soa.model.Subject" table="SUBJECT">
+        <id name="id" type="integer">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="10" not-null="false" unique="false" />
+        </property>
+        <set name="students" table="STUDENT_SUBJECT" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="SUBJECT_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.soa.model.Student">
+                <column name="STUDENT_ID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+
+</hibernate-mapping>

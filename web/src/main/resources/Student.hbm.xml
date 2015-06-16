@@ -4,12 +4,25 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.soa.Student" table="EMPLOYEE">
+    <class name="com.soa.model.Student" table="STUDENT">
         <meta attribute="class-description">
             This class contains the student detail.
         </meta>
-        <id name="indexNo" column="indexNo" type="string"/>
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="indexNo" column="indexNo" type="string"/>
         <property name="firstName" column="firstName" type="string"/>
         <property name="lastName" column="lastName" type="string"/>
+        <set name="subjects" table="STUDENT_SUBJECT"
+             inverse="true" lazy="false" fetch="select" cascade="all-delete-orphan" >
+            <key>
+                <column name="STUDENT_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.soa.model.Subject">
+                <column name="SUBJECT_ID" not-null="true" />
+            </many-to-many>
+        </set>
     </class>
 </hibernate-mapping>

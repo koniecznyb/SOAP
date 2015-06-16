@@ -1,21 +1,25 @@
 package com.soa;
 
-import com.sun.org.apache.xerces.internal.util.Status;
-import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
+import com.soa.model.Student;
+import com.soa.model.Subject;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import javax.ejb.Stateless;
 import javax.imageio.ImageIO;
-import javax.print.attribute.standard.Media;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by redi on 28.04.15.
@@ -62,6 +66,7 @@ public class TestResource {
         return Response.status(Response.Status.FORBIDDEN).build();
 
     }
+
 
     @GET
     @Produces("application/json")
@@ -127,5 +132,82 @@ public class TestResource {
     @Path("delete")
     public Response delete(){
         return Response.ok("Something deleted").build();
+    }
+
+
+    @DELETE
+    @Produces("application/json")
+    @Path("deleteStudent")
+    public Response deleteStudent(@QueryParam("id") Integer id) {
+        Session session = Hibernate.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("delete from Student where ID= :id");
+        query.setInteger("id", id);
+        int result = query.executeUpdate();
+        session.getTransaction().commit();
+        if(result == 1) {
+            return Response.status(200).entity("DELETED").build();
+        } else {
+            return Response.status(204).build();
+        }
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("student")
+    public Response getStudent(@QueryParam("id") Integer id){
+        Session session = Hibernate.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Student where id= :id");
+        query.setInteger("id", id);
+        Student student = (Student) query.uniqueResult();
+        session.getTransaction().commit();
+        return Response.ok(student, MediaType.APPLICATION_JSON).build();
+    }
+
+
+    @GET
+    @Produces("application/json")
+    @Path("getStudents")
+    public Response getStudents() {
+        Session session = Hibernate.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Query query = session.createQuery("from Student");
+        List students = query.list();
+        session.getTransaction().commit();
+        return Response.ok(students, MediaType.APPLICATION_JSON).build();
+    }
+
+
+    @POST
+    @Produces("application/json")
+    @Path("addStudent")
+    public Response getStudent(@FormParam("firstName") String firstName, @FormParam("lastName") String lastName,
+    @FormParam("albumNum") String albumNum, @FormParam("subject1") String subject1,
+                               @FormParam("subject2") String subject2){
+        Session session = Hibernate.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+
+        Student student = new Student();
+        student.setFirstName(firstName);
+        student.setLastName(lastName);
+        student.setIndexNo(albumNum);
+        Set<Subject> subjects = new HashSet<Subject>();
+
+        subjects.add(new Subject(subject1));
+        subjects.add(new Subject(subject2));
+
+        student.setSubjects(subjects);
+
+        session.save(student);
+        Boolean saved = session.contains(student);
+        session.getTransaction().commit();
+        if(saved == true){
+            return Response.status(200).entity(student).build();
+        }else {
+            return Response.status(422).build();
+        }
+
     }
 }
